@@ -1,0 +1,12 @@
+{
+  "name": "comicverse-hub",
+  "version": "1.0.0",
+  "description": "A futuristic anime.js-inspired online comic store",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -p 3000"
+  },
+  "dependencies": {
+    "animejs": "^4.2.2"
+  }
+}

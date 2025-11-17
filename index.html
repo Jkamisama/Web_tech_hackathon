@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComicVerse Hub - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">ComicVerse Hub</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="browse.html">Browse</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button></li>
+      <li>
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>Welcome to ComicVerse Hub</h1>
+    <p>Explore the World of Manga & Japanese Comics</p>
+    <button class="btn-primary" onclick="window.location.href='browse.html'">Browse Now</button>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">New Releases</h2>
+    <div class="comic-grid" id="newReleases"></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Popular Series</h2>
+    <div class="comic-grid" id="popularSeries"></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Publisher Spotlight</h2>
+    <div class="publisher-grid">
+      <div class="publisher-card" onclick="filterByPublisher('Shueisha')">SHUEISHA</div>
+      <div class="publisher-card" onclick="filterByPublisher('Kodansha')">KODANSHA</div>
+      <div class="publisher-card" onclick="filterByPublisher('Shogakukan')">SHOGAKUKAN</div>
+      <div class="publisher-card" onclick="filterByPublisher('Hakusensha')">HAKUSENSHA</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 ComicVerse Hub. All rights reserved.</p>
+  </footer>
+
+  <!-- Manga Detail Modal -->
+  <div class="modal-overlay" id="mangaModal" onclick="closeModal(event)">
+    <div class="manga-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="data/comics.js"></script>
+  <script src="node_modules/animejs/lib/anime.min.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# System files
+.DS_Store
+.vscode/
+*.log
+
+# Optional - uncomment if you want to use CDN for anime.js
+# node_modules/

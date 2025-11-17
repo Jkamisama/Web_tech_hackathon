@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Manga - ComicVerse Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">ComicVerse Hub</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="browse.html">Browse</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button></li>
+      <li>
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="section">
+    <h2 class="section-title">Browse All Manga</h2>
+    
+    <div class="filter-panel">
+      <select id="publisherFilter">
+        <option value="all">All Publishers</option>
+        <option value="Shueisha">Shueisha</option>
+        <option value="Kodansha">Kodansha</option>
+        <option value="Shogakukan">Shogakukan</option>
+        <option value="Hakusensha">Hakusensha</option>
+        <option value="Takeshobo">Takeshobo</option>
+        <option value="Yen Press">Yen Press</option>
+        <option value="Enterbrain">Enterbrain</option>
+        <option value="Akita Shoten">Akita Shoten</option>
+        <option value="Manglobe">Manglobe</option>
+      </select>
+      
+      <select id="sortFilter">
+        <option value="title">Sort by Title (A-Z)</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="year">Release Year</option>
+      </select>
+    </div>
+
+    <div class="comic-grid" id="browseGrid"></div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 ComicVerse Hub. All rights reserved.</p>
+  </footer>
+
+  <!-- Manga Detail Modal -->
+  <div class="modal-overlay" id="mangaModal" onclick="closeModal(event)">
+    <div class="manga-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="data/comics.js"></script>
+  <script src="node_modules/animejs/lib/anime.min.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/browse.js"></script>
+</body>
+</html>
