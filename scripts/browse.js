@@ -4,10 +4,13 @@ let filteredComics = [...comicsData];
 function createComicCard(comic) {
   return `
     <div class="comic-card">
-      <div style="position: relative;" onclick="openMangaModal('${comic.id}')">
+      <div class="comic-card-image-wrapper" onclick="openMangaModal('${comic.id}')">
         <img src="${comic.image}" alt="${comic.title}" onerror="this.src='data/img/Berserk.jpg'">
         <button class="quick-add" onclick="event.stopPropagation(); quickAddToCart('${comic.id}', this)">
-          + Add to Cart
+          <svg style="width: 16px; height: 16px; margin-right: 6px; display: inline-block; vertical-align: middle;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          Add to Cart
         </button>
       </div>
       <div class="comic-info" onclick="openMangaModal('${comic.id}')">

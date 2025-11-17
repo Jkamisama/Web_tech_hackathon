@@ -10,7 +10,7 @@ function renderCart() {
         <h2>Your cart is empty</h2>
         <p>Browse our manga collection to add items</p>
         <button class="btn-primary" onclick="window.location.href='browse.html'" style="margin-top: 20px;">
-          Browse Manga
+          <span>Browse Manga</span>
         </button>
       </div>
     `;
@@ -116,14 +116,18 @@ function checkout() {
   
   container.innerHTML = `
     <div class="checkout-success">
-      <div class="success-icon">✓</div>
+      <div class="success-icon">
+        <svg style="width: 80px; height: 80px; color: var(--success);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
       <h2>Order Confirmed!</h2>
       <p>Thank you for your purchase. Your manga will be shipped within 2-3 business days.</p>
       <p style="margin-top: 12px; color: var(--text-secondary);">
         Order confirmation has been sent to your email.
       </p>
       <button class="btn-primary" onclick="window.location.href='index.html'" style="margin-top: 32px;">
-        Continue Shopping
+        <span>Continue Shopping</span>
       </button>
     </div>
   `;

@@ -5,15 +5,32 @@ function toggleTheme() {
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
-  const toggle = document.getElementById('themeToggle');
-  if (toggle) toggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  const moonIcon = document.getElementById('moonIcon');
+  const sunIcon = document.getElementById('sunIcon');
+  if (moonIcon && sunIcon) {
+    if (newTheme === 'dark') {
+      moonIcon.style.display = 'none';
+      sunIcon.style.display = 'block';
+    } else {
+      moonIcon.style.display = 'block';
+      sunIcon.style.display = 'none';
+    }
+  }
 }
 
 // Load saved theme
 const savedTheme = localStorage.getItem('theme') || 'light';
 document.documentElement.setAttribute('data-theme', savedTheme);
-if (document.getElementById('themeToggle')) {
-  document.getElementById('themeToggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+const moonIcon = document.getElementById('moonIcon');
+const sunIcon = document.getElementById('sunIcon');
+if (moonIcon && sunIcon) {
+  if (savedTheme === 'dark') {
+    moonIcon.style.display = 'none';
+    sunIcon.style.display = 'block';
+  } else {
+    moonIcon.style.display = 'block';
+    sunIcon.style.display = 'none';
+  }
 }
 
 // Update cart count
@@ -31,10 +48,13 @@ function updateCartCount() {
 function createComicCard(comic) {
   return `
     <div class="comic-card">
-      <div style="position: relative;" onclick="openMangaModal('${comic.id}')">
+      <div class="comic-card-image-wrapper" onclick="openMangaModal('${comic.id}')">
         <img src="${comic.image}" alt="${comic.title}" onerror="this.src='data/img/Berserk.jpg'">
         <button class="quick-add" onclick="event.stopPropagation(); quickAddToCart('${comic.id}', this)">
-          + Add to Cart
+          <svg style="width: 16px; height: 16px; margin-right: 6px; display: inline-block; vertical-align: middle;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          Add to Cart
         </button>
       </div>
       <div class="comic-info" onclick="openMangaModal('${comic.id}')">
@@ -61,11 +81,11 @@ function quickAddToCart(mangaId, button) {
   updateCartCount();
   
   // Visual feedback
-  const originalText = button.textContent;
-  button.textContent = '✓ Added!';
-  button.style.background = '#34C759';
+  const originalHTML = button.innerHTML;
+  button.innerHTML = '<svg style="width: 16px; height: 16px; margin-right: 6px; display: inline-block; vertical-align: middle;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Added!';
+  button.style.background = '#30D158';
   setTimeout(() => {
-    button.textContent = originalText;
+    button.innerHTML = originalHTML;
     button.style.background = '';
   }, 1500);
 }
